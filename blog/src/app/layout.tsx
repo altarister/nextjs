@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+
+import Header from '@/component/header'
+import Footer from '@/component/footer'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,10 +29,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`flax flax-col w-full max-w-screen-2xl mx-auto ${geistSans.variable} ${geistMono.variable} antialiased`}
+        // className='flax flax-col w-full max-w-screen-2xl mx-auto'
+
       >
-        {children}
+        <Header/>
+        <main className="grow bg-amber-300">{children}</main>
+        <Footer/>
       </body>
+
+
+      {/* "grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] */}
     </html>
   );
 }
